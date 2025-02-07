@@ -3,9 +3,12 @@ package com.zb.meeteat.domain.matching.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Place {
   private Long id;                // kakao maps api 키
   private String name;            // 장소 이름

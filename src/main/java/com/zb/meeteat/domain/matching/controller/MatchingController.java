@@ -4,16 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.zb.meeteat.domain.matching.dto.MatchingRequest;
 import com.zb.meeteat.domain.matching.dto.MatchingResponse;
 import com.zb.meeteat.domain.matching.service.MatchingService;
-import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,7 +20,8 @@ public class MatchingController {
 
   // 매칭 신청
   @PostMapping("/request")
-  public ResponseEntity<MatchingResponse> requestMatching(@RequestBody MatchingRequest req) {
+  public ResponseEntity<MatchingResponse> requestMatching(@RequestBody MatchingRequest req)
+      throws JsonProcessingException {
 
     matchingService.requestMatching(req);
 
@@ -33,5 +30,4 @@ public class MatchingController {
             .message("Matching started").build()
     );
   }
-
 }
